@@ -25,6 +25,10 @@ app.configure(function(){
     app.use(express.static(path.join(__dirname, 'public')));
 });
 
+// These are states for the server itself. This is great for stroing values that you might want to give up in a jade template.
+// Since I'm staritng to get better with jade templates, this is actually a great feature that comes with the terretory of
+// express. I should take full advantage of this new technology.
+
 app.connectionStatus = 'No Server Connection';
 app.exchangeStatus = 'No Exchange Established';
 app.queueStatus = 'No queue established';
@@ -46,6 +50,13 @@ app.post('/start-server', function(req, res){
         res.redirect('/');
     });
 });
+
+app.post('/new-exchange', function(req, res){
+    app.e = app.rabbitMqConnection.exchange('test-exchange');
+    app.exchangeStatus = 'The queue is now ready to be used!';
+    res.redirect('/');
+});
+
 
 
 

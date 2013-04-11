@@ -14,3 +14,7 @@ body
     p Please select an option:
     form(action='/start-server', method='post')
         input(type='submit', value='Start The Server')
+    form(action='/new-exchange', method='post')
+        input(type='submit', value='Establish an Exchange')
+    form(action='/new-queue', method='post')
+        input(type='submit', value='Establish a new Message Queue')
