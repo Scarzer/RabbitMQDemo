@@ -63,11 +63,23 @@ app.post('/new-queue', function(req, res){
     res.redirect('/');
 });
 
-app.get('/messaging-service', function(req, res){
+app.get('/message-service', function(req, res){
     app.q.bind(app.e, '#');
     res.render('messaging-service.jade',{
         title: 'Welcome to the messaging Service!',
         sentMessage: ''
+    });
+});
+
+app.post('/newMessage', function(req, res){
+    var newMessage = req.body.newMessage;
+    app.e.publish('routingKey', {message: newMessage});
+
+    app.q.subscribe(function(msg){
+        res.render('messaging-service.jade', {
+            title: 'You\'ve got mail!',
+            sentMessage: msg.message
+        });
     });
 });
 
