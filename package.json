@@ -1,0 +1,13 @@
+
+{
+    "name":"RabbitMQDemo",
+    "version" : "0.0.1",
+    "scripts" : {
+        "start":"node app"
+    },
+    "dependencies" : {
+        "express" : "*",
+        "amqp" : "*",
+        "socket.io" : "*"
+    }
+}
