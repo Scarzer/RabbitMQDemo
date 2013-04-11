@@ -57,6 +57,17 @@ app.post('/new-exchange', function(req, res){
     res.redirect('/');
 });
 
+app.post('/new-queue', function(req, res){
+    app.q = app.rabbitMqConnection.queue('test-queue');
+    app.queueStatus = 'The queue is now ready to be used!';
+    res.redirect('/');
+});
 
-
+app.get('/messaging-service', function(req, res){
+    app.q.bind(app.e, '#');
+    res.render('messaging-service.jade',{
+        title: 'Welcome to the messaging Service!',
+        sentMessage: ''
+    });
+});
 

@@ -18,3 +18,6 @@ body
         input(type='submit', value='Establish an Exchange')
     form(action='/new-queue', method='post')
         input(type='submit', value='Establish a new Message Queue')
+    if(queueStatus == 'The queue is now ready to be used!' && exchangeStatus == 'The queue is now ready to be used!')
+        h2 BOOM! Success!
+        a(href='/message-service') Click here to go to the messaging service!
