@@ -73,6 +73,7 @@ app.get('/message-service', function(req, res){
 
 app.post('/newMessage', function(req, res){
     var newMessage = req.body.newMessage;
+    console.log(newMessage);
     app.e.publish('routingKey', {message: newMessage});
 
     app.q.subscribe(function(msg){
